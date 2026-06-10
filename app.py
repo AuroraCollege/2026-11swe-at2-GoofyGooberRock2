@@ -1,7 +1,8 @@
 from flask import Flask, render_template, request
 from wumpus import HuntTheWumpus
-import blackjack
+from blackjack import game1
 wumpus_game = HuntTheWumpus()
+blackjack_game = game1()
 
 app = Flask(__name__)
 
@@ -17,9 +18,9 @@ def wumpus():
         message = wumpus_game.new_game()
     return render_template('wumpus.html', message=message, game=wumpus_game)
 
-@app.route('/blackjack')
+@app.route('/blackjack', methods=['POST', 'GET'])
 def blackjack():
-    return render_template('blackjack.html')
+    return render_template('blackjack.html', game1=blackjack_game, dlh=blackjack_game.dlh)
 
 if __name__ == "__main__":
     app.run()

@@ -8,7 +8,7 @@ class Card:
         self.value = random.choice(deck)
 
     def display(self):
-        if self.value != 10:
+        if self.value != '10':
             return [' ----------',
             f'| {self.value}        |',
             '|          |',
@@ -16,7 +16,7 @@ class Card:
             '|          |',
             f'|        {self.value} |',
             ' ----------']
-        if self.value == 10:
+        if self.value == '10':
             return ['  ----------',
             f'| {self.value}       |',
             '|          |',
@@ -42,18 +42,22 @@ class DealerHand:
         self.card2 = card2
 
     def display_hidden(self):
-        card1_lines = card1.display()
-        card2_lines = card2.display_hidden()
+        card1_lines = self.card1.display()
+        card2_lines = self.card2.display_hidden()
+        output = []
         for i in range(len(card1_lines)):
-            print(card1_lines[i] + "  " + card2_lines[i])
+            output.append(card1_lines[i] + "  " + card2_lines[i])
+        return "\n".join(output)
 
     def display(self):
-        card1_lines = card1.display()
-        card2_lines = card2.display()
-        print(card1_lines[0] + "   " + card2_lines[0])
+        card1_lines = self.card1.display()
+        card2_lines = self.card2.display()
+        output = []
+        output.append(card1_lines[0] + "   " + card2_lines[0])
         for i in range(1, 6):
-            print(card1_lines[i] + "  " + card2_lines[i])
-        print(card1_lines[6] + '   ' + card2_lines[6])
+            output.append(card1_lines[i] + "  " + card2_lines[i])
+        output.append(card1_lines[6] + "   " + card2_lines[6])
+        return "\n".join(output)
      
 card1 = Card(deck= deck)
 card2 = Card(deck= deck)
@@ -61,4 +65,10 @@ dealerhand = DealerHand(card1= card1, card2= card2)
 dealerhand.display_hidden()
 dealerhand.display()
 
-__name__ = '__main__'
+class game1():
+    def __init__ (self):
+        self.dlh = dealerhand.display()
+    
+    def i (self):
+        return self.dlh
+    

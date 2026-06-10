@@ -3,13 +3,15 @@
 {% block body %} 
 <style>
     td {
-        padding: 0.25rem;
+        padding: 0.5rem;
     }
 </style>
 </body>
     <div class="container"></div>
     <h1>Welcome to blackjack!</h1>
+    <p>The dealer's cards are:</p>
+        <pre>{{ dlh }}</pre>
+
 </body>
 
-
-{ % endbody % }
+{% endblock %}
