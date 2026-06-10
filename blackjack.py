@@ -8,6 +8,7 @@ class Card:
         self.value = random.choice(deck)
 
     def display(self):
+        
         if self.value != '10':
             return [' ----------',
             f'| {self.value}        |',
@@ -58,19 +59,23 @@ class DealerHand:
             output.append(card1_lines[i] + "  " + card2_lines[i])
         output.append(card1_lines[6] + "   " + card2_lines[6])
         return "\n".join(output)
-     
-card1 = Card(deck= deck)
-card2 = Card(deck= deck)
-dealerhand = DealerHand(card1= card1, card2= card2)
-dealerhand.display_hidden()
-dealerhand.display()
+    
+class Player():
+    def __init__ (self):
+        pass
+
+
 
 class game1():
-    def __init__ (self):
-        self.dlh = dealerhand.display()
-        self.dlhh = dealerhand.display_hidden()
+    def run(self):
+        self.cards = [Card(deck) for _ in range(7)]
+        self.dealerhand = DealerHand(self.card1, self.card2)
+        self.dlh = self.dealerhand.display()
+        self.dlhh = self.dealerhand.display_hidden()
+        self.dealer_message = "The dealer's cards are out and it is your action..."
+        self.player = Player
+        return self.dealer_message, self.dlh, self.dlhh
     
-    def i (self):
-        return self.dlh, self.dlhh
-        
+    def hit(self):
+        pass
     
