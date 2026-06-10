@@ -20,7 +20,7 @@ def wumpus():
 
 @app.route('/blackjack', methods=['POST', 'GET'])
 def blackjack():
-    return render_template('blackjack.html', game1=blackjack_game, dlh=blackjack_game.dlh)
+    return render_template('blackjack.html', game1=blackjack_game, dlh=blackjack_game.dlh, dlhh=blackjack_game.dlhh)
 
 if __name__ == "__main__":
     app.run()

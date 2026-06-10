@@ -17,7 +17,7 @@ class Card:
             f'|        {self.value} |',
             ' ----------']
         if self.value == '10':
-            return ['  ----------',
+            return [' ----------',
             f'| {self.value}       |',
             '|          |',
             '|          |',
@@ -68,7 +68,9 @@ dealerhand.display()
 class game1():
     def __init__ (self):
         self.dlh = dealerhand.display()
+        self.dlhh = dealerhand.display_hidden()
     
     def i (self):
-        return self.dlh
+        return self.dlh, self.dlhh
+        
     
