@@ -25,9 +25,9 @@ def blackjack():
         action = request.form['hit']
 
         if action == 'hit':
-            blackjack_game.hit()
+            blackjack_game.hit1()
 
-    return render_template('blackjack.html', game1=blackjack_game, dlh=blackjack_game.dlh, dlhh=blackjack_game.dlhh, dealer_message=blackjack_game.dealer_message)
+    return render_template('blackjack.html', game1=blackjack_game, dlh=blackjack_game.dlh, dlhh=blackjack_game.dlhh, dealer_message=blackjack_game.dealer_message, plh=blackjack_game.plh)
 
 if __name__ == "__main__":
     app.run()
