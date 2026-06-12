@@ -19,15 +19,19 @@ def wumpus():
         message = wumpus_game.new_game()
     return render_template('wumpus.html', message=message, game=wumpus_game)
 
+hits = 0
 @app.route('/blackjack', methods=['POST', 'GET'])
 def blackjack():
     if request.method == 'POST':
         action = request.form['hit']
 
-        if action == 'hit':
-            blackjack_game.hit1()
+        if action == 'hit' and hits == 0:
+            blackjack_game.plh = blackjack_game.hit1()
+            hits += 1
 
-    return render_template('blackjack.html', game1=blackjack_game, dlh=blackjack_game.dlh, dlhh=blackjack_game.dlhh, dealer_message=blackjack_game.dealer_message, plh=blackjack_game.plh)
+    return render_template('blackjack.html', game1=blackjack_game, dlh=blackjack_game.dlh, 
+                           dlhh=blackjack_game.dlhh, dealer_message=blackjack_game.dealer_message, 
+                           plh=blackjack_game.plh, dltt=blackjack_game.dltt, pltt=blackjack_game.pltt)
 
 if __name__ == "__main__":
     app.run()

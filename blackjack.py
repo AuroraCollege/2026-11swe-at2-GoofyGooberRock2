@@ -83,9 +83,9 @@ class PlayerHand():
         card2_lines = self.card2.display()
         card3_lines = self.card3.display()
         output = []
-        output.append(card1_lines[0] + "   " + card2_lines[0] + "   " + card3_lines)
+        output.append(card1_lines[0] + "   " + card2_lines[0] + "   " + card3_lines[0])
         for i in range(1, 6):
-            output.append(card1_lines[i] + "  " + card2_lines[i] + "   " + card3_lines[i])
+            output.append(card1_lines[i] + "  " + card2_lines[i] + "  " + card3_lines[i])
         output.append(card1_lines[6] + "   " + card2_lines[6] + "   " + card3_lines[6])
         return "\n".join(output)
 
@@ -95,15 +95,38 @@ class PlayerHand():
 class game1():
     def run(self):
         self.cards = [Card(deck) for _ in range(7)]
-        self.dealerhand = DealerHand(self.cards[1], self.cards[2])
+        self.dealerhand = DealerHand(self.cards[0], self.cards[1])
         self.dlh = self.dealerhand.display()
         self.dlhh = self.dealerhand.display_hidden()
         self.dealer_message = "The dealer's cards are out and it is your action..."
         self.player = PlayerHand(self.cards[2], self.cards[3], self.cards[4], self.cards[5], self.cards[6])
         self.plh = self.player.display()
-        return self.dealer_message, self.dlh, self.dlhh, self.plh
+        self.dltt = self.blackjack_total([self.cards[0]])
+        self.pltt = self.blackjack_total([self.cards[2], self.cards[3]])
+
         
-    
     def hit1(self):
-        self.player.display1hit()
+        self.plh = self.player.display1hit()
+        return self.plh
+    
+    def blackjack_total(self, cards):
+        total = 0
+
+        for card in cards:
+            if card.value in ('K', 'Q', 'J'):
+                total += 10
+            elif card.value == 'A':
+                total += 1
+            else:
+                total += int(card.value)
+
+        return total
+    
+
+
+    
+    
+
+        
+        
     
